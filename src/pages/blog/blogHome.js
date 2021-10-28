@@ -1,15 +1,14 @@
 import * as React from "react";
 import { Link, graphql } from "gatsby";
-import { MDXRenderer } from "gatsby-plugin-mdx";
+
 import Layout from "../../components/layout";
 
 const Blog = ({ data }) => {
-  console.log(data);
   return (
     <Layout pageTitle="My Blog Posts">
       {data.allMdx.nodes &&
         data.allMdx.nodes.map((node) => (
-          <article>
+          <article key={node.slug}>
             <h2>
               <Link to={`/blog/${node.slug}`}> {node.frontmatter.title} </Link>
             </h2>
